@@ -1,14 +1,40 @@
-<div ng-controller="CompaniesController as CCtrl">
-  <div class="col-xs-12 col-md-8 app-companies">
+<div class="app-contaiter" ng-controller="CompaniesController as CCtrl">
+  <!-- Companies block -->
+  <div class="col-xs-12 col-md-7 app-companies" ng-hide="productsShow">
     <div class="companies-header">
       <h3>Companies</h3>
     </div>
     <div class="companies-content">
       <div class="list-group" ng-repeat="company in companies | orderBy: 'companyName' | filter: filterName">
-        <a class="list-group-item" ng-model='company.companyName'>{{company.companyName}}</a>
+        <a href="" class="col-xs-12 col-md-10 list-group-item" ng-click="showProducts(company.companyName)" ng-model='company.companyName'>{{company.companyName}}</a>
+        <a href="#" class=" btn btn-warning a-btn-slide-text">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="btn btn-danger a-btn-slide-text">
+           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </a>
       </div>
     </div>
   </div>
+  <!-- Products block -->
+  <div class="col-xs-12 col-md-7 app-products" ng-show="productsShow">
+    <div class="products-header">
+      <a href="" ng-click="productsShow=false">X</a>
+      <h3>{{products.companyName}} Products</h3>
+    </div>
+    <div class="products-content">
+      <div class="list-group" ng-repeat="product in products.companyGoods | filter: filterProducts">
+        <a class="col-xs-12 col-md-10 list-group-item">{{product}}</a>
+        <a href="#" class=" btn btn-warning a-btn-slide-text">
+            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+        </a>
+        <a href="#" class="btn btn-danger a-btn-slide-text">
+           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <!-- Filters block -->
   <div class="col-xs-6 col-md-4 app-filters">
     <div class="filter-by-name-header">
       <h3>Filter by name</h3>
@@ -31,10 +57,12 @@
           <div class="form-group">
               <div class="input-group">
                   <div class="input-group-addon"><i class="fa fa-search">&#x2192;</i></div>
-                  <input type="text" class="form-control" placeholder="Product" ng-model="FilterProducts">
+                  <input type="text" class="form-control" placeholder="Product" ng-model="filterProducts">
               </div>
           </div>
       </form>
     </div>
   </div>
+
+
 </div>

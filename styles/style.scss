@@ -18,11 +18,21 @@ body, html {
 .app-header{
   height:20%;
 }
-.app-companies{
+
+.app-container{
+  background: rgb(255,255,255);
+}
+
+.app-companies, .app-products{
   background: $background;
 }
 .app-filters{
   background: $background;
+  // position: fixed;
+  // left: 60%;
+}
+.app-filters, .app-companies, .app-products {
+  margin: 20px;
 }
 
 .under-header-block{
