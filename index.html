@@ -11,15 +11,13 @@
     <script src="app/app.core/app.controller.js"></script>
     <script src="app/components/header/header.controller.js"></script>
     <script src="app/components/companies/companies.controller.js"></script>
-    <script src="app/components/filters/filters.controller.js"></script>
     <script src="build/main.bundle.js"></script>
     <link rel="stylesheet" href="/styles/style.min.css">
   </head>
   <body ng-controller='AppController as AppCtrl'>
     <div class="parallax">
-      <div class="app-header" ng-include="'app/components/header/header.html'" ng-controller="HeaderController as HCtrl"></div>
-      <div class="col-xs-12 col-md-8 app-companies" ng-include="'app/components/companies/companies.html'" ng-controller="CompaniesController as CCtrl"></div>
-      <div class="col-xs-6 col-md-4 app-filters" ng-include="'app/components/filters/filters.html'" ng-controller="FiltersController as FCtrl"></div>
+      <parheader></parheader>
+      <companies></companies>
     </div>
   </body>
 </html>

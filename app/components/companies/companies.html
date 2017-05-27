@@ -1,1 +1,40 @@
-<p>{{title}}</p>
+<div ng-controller="CompaniesController as CCtrl">
+  <div class="col-xs-12 col-md-8 app-companies">
+    <div class="companies-header">
+      <h3>Companies</h3>
+    </div>
+    <div class="companies-content">
+      <div class="list-group" ng-repeat="company in companies | orderBy: 'companyName' | filter: filterName">
+        <a class="list-group-item" ng-model='company.companyName'>{{company.companyName}}</a>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-6 col-md-4 app-filters">
+    <div class="filter-by-name-header">
+      <h3>Filter by name</h3>
+    </div>
+    <div class="filter-by-name-content">
+      <form>
+          <div class="form-group">
+              <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-search">&#x2192;</i></div>
+                  <input type="text" class="form-control" placeholder="Name" ng-model="filterName">
+              </div>
+          </div>
+      </form>
+    </div>
+    <div class="filter-by-product-header">
+      <h3>Filter by products</h3>
+    </div>
+    <div class="filter-by-product-content">
+      <form>
+          <div class="form-group">
+              <div class="input-group">
+                  <div class="input-group-addon"><i class="fa fa-search">&#x2192;</i></div>
+                  <input type="text" class="form-control" placeholder="Product" ng-model="FilterProducts">
+              </div>
+          </div>
+      </form>
+    </div>
+  </div>
+</div>
