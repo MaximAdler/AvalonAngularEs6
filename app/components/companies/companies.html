@@ -1,18 +1,52 @@
-<div class="app-contaiter" ng-controller="CompaniesController as CCtrl">
+<div class="app-container" ng-controller="CompaniesController as CCtrl">
   <!-- Companies block -->
   <div class="col-xs-12 col-md-7 app-companies" ng-hide="productsShow">
     <div class="companies-header">
       <h3>Companies</h3>
     </div>
     <div class="companies-content">
+      <!--Add new company form-->
+      <div class="col-xs-10 col-md-8 list-group">
+        <input type="text" name="new_company" ng-model="new_company" class="form-control" placeholder="New company">
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <a href="" class="btn btn-success a-btn-slide-text" ng-click="addCompany()">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+      </div>
+      <!--All companies-->
       <div class="list-group" ng-repeat="company in companies | orderBy: 'companyName' | filter: filterName">
-        <a href="" class="col-xs-12 col-md-10 list-group-item" ng-click="showProducts(company.companyName)" ng-model='company.companyName'>{{company.companyName}}</a>
-        <a href="#" class=" btn btn-warning a-btn-slide-text">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </a>
-        <a href="#" class="btn btn-danger a-btn-slide-text">
-           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </a>
+        <div class="col-xs-10 col-md-9 companies-list">
+          <a href="" class="list-group-item"
+                     ng-click="showProducts(company.companyName)"
+                     ng-model='company.companyName'
+                     ng-hide="editCompanyName">
+                     {{company.companyName}}
+          </a>
+          <input type="text" class="form-control"
+                             name="edited_company"
+                             ng-value="company.companyName"
+                             ng-model="edited_company[$index]"
+                             ng-show="editCompanyName"
+                             required>
+        </div>
+        <div class="col-xs-4 col-md-3">
+              <a href="" class=" btn btn-info a-btn-slide-text"
+                         ng-click="editCompanyName = !editCompanyName"
+                         ng-hide="editCompanyName">
+                  <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+              </a>
+              <a href="" class="btn btn-danger a-btn-slide-text"
+                         ng-click="deleteCompany(company.companyName)"
+                         ng-hide="editCompanyName">
+                 <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+              </a>
+              <a href="" class="btn btn-info a-btn-slide-text"
+                         ng-click="editCompany(company.companyName, [$index])"
+                         ng-show="editCompanyName">
+                 <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+              </a>
+          </div>
       </div>
     </div>
   </div>
@@ -23,14 +57,44 @@
       <h3>{{products.companyName}} Products</h3>
     </div>
     <div class="products-content">
+      <!--Add new product-->
+      <div class="col-xs-10 col-md-8 list-group">
+        <input type="text" name="new_product" ng-model="new_product" class="form-control" placeholder="New product">
+      </div>
+      <div class="col-xs-4 col-md-2">
+        <a href="" class="btn btn-success a-btn-slide-text" ng-click="addProduct()">
+          <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+        </a>
+      </div>
+      <!--All products of selected company-->
       <div class="list-group" ng-repeat="product in products.companyGoods | filter: filterProducts">
-        <a class="col-xs-12 col-md-10 list-group-item">{{product}}</a>
-        <a href="#" class=" btn btn-warning a-btn-slide-text">
-            <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
-        </a>
-        <a href="#" class="btn btn-danger a-btn-slide-text">
-           <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
-        </a>
+        <div class="col-xs-10 col-md-9 products-list">
+          <a class="list-group-item"
+             ng-hide="editProductShow">
+             {{product}}
+          </a>
+          <input type="text" class="form-control"
+                             name="edited_product"
+                             ng-value="product"
+                             ng-show="editProductShow">
+        </div>
+        <div class="col-xs-4 col-md-3">
+          <a href="" class=" btn btn-info a-btn-slide-text"
+                     ng-click="editProductShow = !editProductShow"
+                     ng-hide="editProductShow">
+              <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+          </a>
+          <a href="" class="btn btn-danger a-btn-slide-text"
+                     ng-click="deleteProduct(product)"
+                     ng-hide="editProductShow">
+             <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+          </a>
+          <a href="" class="btn btn-info a-btn-slide-text"
+                     ng-click="editProduct(product, [$index])"
+                     ng-show="editProductShow">
+             <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
@@ -63,6 +127,4 @@
       </form>
     </div>
   </div>
-
-
 </div>

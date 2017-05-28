@@ -1,5 +1,6 @@
 $height: 100%;
-$background: rgba(250,250,250,.9);
+$background-blocks: rgba(250,250,250,.9);
+$background-containers: rgb(240, 219, 219);
 
 body, html {
     height: $height;
@@ -16,27 +17,33 @@ body, html {
 }
 
 .app-header{
-  height:20%;
+  height:40%;
 }
 
 .app-container{
-  background: rgb(255,255,255);
+  background: $background-containers;
+  height: 100%;
 }
 
 .app-companies, .app-products{
-  background: $background;
+  background: $background-blocks;
 }
 .app-filters{
-  background: $background;
+  background: $background-blocks;
   // position: fixed;
   // left: 60%;
 }
 .app-filters, .app-companies, .app-products {
   margin: 20px;
+  border-radius: 20px;
 }
 
 .under-header-block{
   width: 100%;
   height: 20%;
-  background: $background;
+  background: $background-containers;
+}
+
+.companies-list, .products-list{
+  margin-bottom: 20px;
 }
