@@ -7,7 +7,8 @@
     <div class="companies-content">
       <!--Add new company form-->
       <div class="col-xs-10 col-md-8 list-group">
-        <input type="text" name="new_company" ng-model="new_company" class="form-control" placeholder="New company">
+        <input type="text" name="new_company" ng-model="new_company" class="form-control" placeholder="New company" ng-style="{'border-color': uniq_company_name ? 'red' : 'none'}">
+        <span class="not-uniq-company" ng-if="uniq_company_name">This company name already exists</span>
       </div>
       <div class="col-xs-4 col-md-2">
         <a href="" class="btn btn-success a-btn-slide-text" ng-click="addCompany()">
@@ -28,7 +29,9 @@
                              ng-value="company.companyName"
                              ng-model="edited_company[$index]"
                              ng-show="editCompanyName"
+                             ng-style="{'border-color': uniq_edited_company_name ? 'red' : 'none'}"
                              required>
+          <span class="not-uniq-company" ng-show="editCompanyName" ng-if="uniq_edited_company_name">This company name already exists</span>
         </div>
         <div class="col-xs-4 col-md-3">
               <a href="" class=" btn btn-info a-btn-slide-text"
@@ -42,7 +45,7 @@
                  <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
               </a>
               <a href="" class="btn btn-info a-btn-slide-text"
-                         ng-click="editCompany(company.companyName, [$index])"
+                         ng-click="editCompany(company.companyName, company.companyGoods, [$index])"
                          ng-show="editCompanyName">
                  <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
               </a>
@@ -62,7 +65,7 @@
         <input type="text" name="new_product" ng-model="new_product" class="form-control" placeholder="New product">
       </div>
       <div class="col-xs-4 col-md-2">
-        <a href="" class="btn btn-success a-btn-slide-text" ng-click="addProduct()">
+        <a href="" class="btn btn-success a-btn-slide-text" ng-click="addProduct(products.companyName, products.companyGoods)">
           <span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
         </a>
       </div>
@@ -75,6 +78,7 @@
           </a>
           <input type="text" class="form-control"
                              name="edited_product"
+                             ng-model="edited_product[$index]"
                              ng-value="product"
                              ng-show="editProductShow">
         </div>
@@ -85,12 +89,12 @@
               <span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
           </a>
           <a href="" class="btn btn-danger a-btn-slide-text"
-                     ng-click="deleteProduct(product)"
+                     ng-click="deleteProduct(products.companyGoods,products.companyName, [$index])"
                      ng-hide="editProductShow">
              <span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
           </a>
           <a href="" class="btn btn-info a-btn-slide-text"
-                     ng-click="editProduct(product, [$index])"
+                     ng-click="editProduct(products.companyGoods,products.companyName, [$index])"
                      ng-show="editProductShow">
              <span class="glyphicon glyphicon-save" aria-hidden="true"></span>
           </a>
