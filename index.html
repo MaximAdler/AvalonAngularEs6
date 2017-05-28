@@ -11,11 +11,13 @@
     <script src="app/app.core/app.controller.js"></script>
     <script src="app/components/header/header.controller.js"></script>
     <script src="app/components/companies/companies.controller.js"></script>
+    <script src="app/components/progress_bar/progress_bar.controller.js"></script>
     <script src="build/main.bundle.js"></script>
     <link rel="stylesheet" href="/styles/style.min.css">
   </head>
   <body ng-controller='AppController as AppCtrl'>
     <div class="parallax">
+      <loading></loading>
       <parheader></parheader>
       <companies></companies>
     </div>

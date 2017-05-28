@@ -11,3 +11,9 @@ angular.module('app',[])
           },
           templateUrl: 'app/components/companies/companies.html'
         })
+        .component('loading', {
+          bindings: {
+            data: '<'
+          },
+          templateUrl: 'app/components/progress_bar/progress_bar.html'
+        })

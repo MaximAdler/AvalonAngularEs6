@@ -6,8 +6,28 @@ app.controller('CompaniesController',['$scope', '$http', '$log', '$window', ($sc
     $scope.editCompanyName = false;
     $scope.uniq_company_name = false;
     $scope.uniq_edited_company_name = false;
+    $scope.showProgressBar = true;
     $scope.edited_company = [];
     $scope.edited_product = [];
+
+
+    // $scope.progressBar = () => {
+    //  let elem = document.getElementById("bar"),
+    //      width = 0,
+    //      id = setInterval(frame, 4);
+    //  function frame(){
+    //    if (width >= 100) {
+    //      clearInterval(id);
+    //      $scope.showProgressBar = false;
+    //     //  console.log($scope.showProgressBar)
+    //    } else {
+    //      width++;
+    //      elem.style.width = width + '%';
+    //      elem.innerHTML = width * 1  + '%';
+    //    }
+    //  }
+    // }
+
 
     $http.get('http://avalon.avalonfaltd.com:3090/companies')
          .then((resp)=>{
