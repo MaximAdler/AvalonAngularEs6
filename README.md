@@ -3,8 +3,8 @@
 ### HOW TO INSTALL
 ```
 git clone https://github.com/MaximAdler/AvalonAngularEs6
-git install
-git start
+npm install
+npm start
 ```
 
 ### Technologies used
